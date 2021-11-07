@@ -12,6 +12,23 @@ public class SortList {
 		List<String> list=Arrays.asList("cb","ab", "test", "java1");
 		
 		
+		Comparator<String> comparator = new Comparator<String>() {
+
+			@Override
+			public int compare(String o1, String o2) {
+				
+				return o2.compareTo(o1);
+			}
+		};
+		
+		
+		List<String> collect2 = list.stream().sorted((a, b)-> b.length()-a.length()).collect(Collectors.toList());
+//		Collections.sort(list, comparator);
+		System.out.println(collect2);
+		
+		System.exit(0);
+		
+		
 		List<String> collect = list.stream().sorted((x, y)-> y.length()-x.length()).collect(Collectors.toList());
 		
 		collect.forEach(System.out::println);
